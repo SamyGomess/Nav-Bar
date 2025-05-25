@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar Lateral Esquerda</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="navigation closed" id="nav">
+    <button class="toggle-btn" id="toggleBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Barra de pesquisa -->
+    <div class="search-container" id="searchContainer">
+      <i class="fas fa-search" id="searchIcon"></i>
+      <input type="text" id="searchInput" placeholder="Pesquisar..." />
+    </div>
+
+    <ul>
+      <li class="active">
+        <a href="#">
+          <i class="fas fa-home"></i>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-user"></i>
+          <span class="text">Profile</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-camera"></i>
+          <span class="text">Photos</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-cog"></i>
+          <span class="text">Settings</span>
+        </a>
+      </li>
+      <div class="indicator"></div>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": { "enable": true, "value_area": 800 }
+        },
+        "color": { "value": "#ffffff" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100, "duration": 0.4 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    const nav = document.getElementById('nav');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const items = document.querySelectorAll('.navigation ul li');
+
+    toggleBtn.addEventListener('click', () => {
+      nav.classList.toggle('closed');
+    });
+
+    items.forEach((item) => {
+      item.addEventListener('click', function () {
+        items.forEach((el) => el.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    
+    const searchContainer = document.getElementById('searchContainer');
+    const searchIcon = document.getElementById('searchIcon');
+
+    searchIcon.addEventListener('click', () => {
+      searchContainer.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
